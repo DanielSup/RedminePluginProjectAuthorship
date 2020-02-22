@@ -10,7 +10,7 @@ class AuthorshipHookListener < Redmine::Hook::ViewListener
   end
 
   def get_user_array
-    users = User.all
+    users = User.where.not(login: [nil, ""])
     user_pair_array = []
     users.each do |user|
         user_pair = [user.login, user.id]
